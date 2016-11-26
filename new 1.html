@@ -1,0 +1,248 @@
+<html>
+<head>
+<link rel="stylesheet" href="style.css">
+<title>
+Application Form - Institute of Banking Personnel Selection
+</title>
+<script>
+function validateForm()
+{
+var x = document.getElementById('one').value
+var y = document.getElementById('Nation').value
+var z = document.getElementById('StCentre').value
+var x1 = document.getElementById('Centre').value
+var y1= document.getElementById('Fname').value
+var y12= document.getElementById('stdCode').value
+var y111= document.getElementById('Mnumber').value
+var z1 = document.getElementById('EmailID').value
+var x2 = document.getElementById('EmailIDconfirmation').value
+var y2 = document.getElementById('EmailComp').value
+var z2 = document.getElementById('KnowCompY').checked
+var x3 = document.getElementById('KnowCompN').checked
+var y3 = document.getElementById('online').checked
+var z3 = document.getElementById('offline').checked
+if (x == null || x == "") {alert("Registration number must be filled out");}
+if (x.length>10){alert("Length of registration number should not exceed 10 digits")}
+if (y.length>20){alert("Length of Nation should not exceed 20 characters")}
+if (z=="-Select-") {alert("Please select the Centre State")}
+if (x1=="-Select-") {alert("Please select the Centre")}
+if (y1 == null || y1 == ""){alert("First name must be filled out");}
+if (y1.length>35){alert("Length of First name should not exceed 35 characters")}
+if (y11.length>5){alert("Length of stdCode should not exceed 5 characters")}
+if (y111.length>10){alert("Length of Mobile number should not exceed 10 characters")}
+if (z1=="" || x2==""){alert("EmailID and EmailIDconfirmation should be filled")}
+var zz=z1.concat("@",y2) ;
+if(zz != x2){alert("Email Id entered and Confirmation EmailID are not the same")}
+if(z2==false && x3==false ){alert("Please check 'yes' or 'No' for Knowledge of Computers
+Field")}
+if(y3==false && z3==false ){alert("Please check 'Online' or 'Offline' for Payment Through
+Field")}
+}
+</script>
+</head>
+<body>
+<div id="header">
+<img src="logo.png" align="left">
+<br>Institute of Banking Personnel Selection
+</div>
+<hr size=6 noshade> </hr>
+<h3 align=center> Note: Please complete the form within 20 minutes. Still, dont hurry ;)</h3>
+<form name="form" onsubmit="return validateForm()" method="post">
+<div class="bar"> Basic Details : </div>
+<table border=0.5px width=100% id="t01">
+<tr>
+<td> Registration number </td>
+<td> <input id="one" type="text" name="regno">(maximum 10 digits)</td>
+</tr>
+<tr>
+<td>Nationality / Citizenship :<font color="red">*</font></td>
+<td> <input id="Nation" type="text">(maximum 20 characters) <b><u><font
+color="red">Definition of nationality</font></u></b></td>
+</tr>
+<tr>
+<td>State / UT which the centre belongs:<font color="red">*</font> </td>
+<td> <select id="StCentre"><option>-Select-
+</option><option>Delhi</option><option>Mumbai</option><option>Chennai</option><option>Imphal
+</option><option>Kolkata</option><option>Nagpur</option>Pune</select></td>
+</tr>
+<td> State/UT code </td>
+<td> <input type="text" name="UTcode"></td>
+</tr>
+<tr>
+<td>Centre of Examination:<font color="red">*</font> </td>
+<td> <select id="Centre"><option>-Select-
+</option><option>Delhi</option><option>Mumbai</option><option>Chennai</option><option>Imphal
+</option><option>Kolkata</option><option>Nagpur</option>Pune</select></td>
+</tr>
+</tr>
+<td> Centre code: </td>
+<td> <input type="text" name="CENTREcode"></td>
+</tr>
+</table>
+<div class="bar"> Personal Details : </div>
+<table border=0.5px width=100% id="t01">
+<tr>
+<td> First Name:<font color="red">*</font> </td>
+<td> <input type="text" id="Fname" >(maximum 35 characters)</td>
+</tr>
+<tr>
+<td>Middle Name:</td>
+<td> <input type="text" name="Mname">(maximum 35 characters)</td>
+</tr>
+<tr>
+<td>Last Name:</td>
+<td> <input type="text" name="Mname">(maximum 35 characters)</td>
+</tr>
+<tr>
+<td>Date of birth <br><font size="1.5" color="blue">please ensure you have
+already filled in the details under the basic details</font> </td>
+<td>
+<select><option>09</option></select><select><option>August</option></select><select><option>199
+8</option></select></td>
+</tr>
+<td> Age Completed as on 01.10.2012: </td>
+<td> <input type="text" name="Age"></td>
+</tr>
+</table>
+<div class="bar"> Contact details: </div>
+<table border=0.5px width=100% id="t01">
+<tr>
+<td> STD code :<font color="red">*</font> </td>
+<td> <input type="text" id="stdCode" >(maximum 5 digits)</td>
+<td> Phone number:<input type="text" name="PhoneNummber" >(maximum 8
+digits) </td>
+</tr>
+<tr>
+<td>Mobile Number:<font color="red">*</font></td>
+<td colspan=2> <input type="text" id="Mnumber">(10 digits)</td>
+</tr>
+<tr>
+<td>Email ID :<font color="red">*</font></td>
+<td colspan=2><input type="text" id="EmailID">@<select
+id="EmailComp"><option>Gmail.com</option><option>Hotmail.com</option><option>Yahoo.com</op
+tion><option>Rediffmail.com</option></select></td>
+</tr>
+<tr>
+<td>Confirm Email ID :<font color="red">*</font></td>
+<td colspan=2><input type="text" id="EmailIDconfirmation">(maximium 50
+characters)</td>
+</tr>
+</table>
+<div class="bar"> Educational Qualification(as on 01.10.2012): </div>
+<table border=0.5px width=100% id="t01">
+<tr>
+<td><b>NOTE:</b> The percentage of marks shall be arrived at by dividing bla
+bla bla!</td>
+</tr>
+<tr>
+<td><b>Exam Passed</b></td>
+<td><b>Subject/Stream</b></td>
+<td><b>Date of Passing</b></td>
+<td><b>% of marks</b></td>
+<td><b>Class/Grade</b></td>
+</tr>
+<tr>
+<td>Graduation/Equivalent :</td>
+<td><input type="text" name="GradSub"></td>
+<td>
+<select><option>09</option></select><select><option>August</option></select><select><option>199
+8</option></select></td>
+<td><input type="text" name="Gradmarks"></td>
+<td> <select><option>09</option></select></td>
+</tr>
+<tr>
+<td>Post Graduation/Equivalent :</td>
+<td><input type="text" name="PGradSub"></td>
+<td>
+<select><option>09</option></select><select><option>August</option></select><select><option>199
+8</option></select></td>
+<td><input type="text" name="PGradmarks"></td>
+<td> <select><option>09</option></select></td>
+</tr><tr>
+<td>Others :</td>
+<td><input type="text" name="OtherSub"></td>
+<td>
+<select><option>09</option></select><select><option>August</option></select><select><option>199
+8</option></select></td>
+<td><input type="text" name="OtherSub"></td>
+<td> <select><option>09</option></select></td>
+</tr>
+<tr>
+<td>Knowledge of Computers<font color="red">*</font></td>
+<td colspan=4><input type="radio" name="Comknowl"
+id="KnowCompY">Yes<input type="radio" name="Comknowl" id="KnowCompN">No</td>
+</tr>
+</table>
+<div class="bar"> Photograph and Signature : </div>
+<table border=0.5px width=100% id="t01">
+<tr>
+<td colspan=2><b><u><font color="red">Guidelines for scanning the
+photograph & Signature</font></u></b>
+</tr>
+<tr style="text-align:right; color:red"><td colspan=2> If the Uploaded phot/Signature is
+not loaded in the right place, your application is liable to be rejected <br> <br>Allowed Photo Size - 20KB
+to 50KB<br> Allowed Signature Size - 10KB to 20KB</td>
+</tr>
+<tr>
+<td>Photograph of the candidate:<font color="red">*</font></td>
+<td><button type="button" onclick="alert('Hello World!')">Choose
+File</button></td>
+</tr>
+<tr>
+<td>Signature of the candidate:<font color="red">*</font></td>
+<td><button type="button" onclick="alert('Hello World!')">Choose
+File</button></td>
+</tr>
+</table>
+<div class="bar"> Application Fee / Implication Charges details :</div>
+<table border=0.5px width=100% id="t01">
+<tr>
+<td>Payment Through:<font color="red">*</font></td>
+<td><input type="radio" name="pay" id="online" > Online(Using
+master/visa debit/ credit cards/internet banking)<input type="radio" name="pay" id="offline" >
+OFFLINE(Designated PSBs)</td>
+</tr>
+<tr>
+<td> Amount:<font color="red">*</font></td>
+<td> 400 </td>
+</tr>
+<tr>
+<td colspan=2><b>Declaration:<b> I hereby Declare bla bla bla bla !
+</td>
+</tr>
+</table>
+<br>
+<br>
+<button type="button" onclick="alert('Hello World!')" style="backgroundcolor:
+rgb(0,209,255)">Feedback</button>
+<input type="submit" value="Submit" style="background-color:rgb(0,209,255)">
+<button type="button" onclick="alert('Hello World!')" style="background-color:rgb(0,209,255)">Save &
+edit</button>
+<button type="button" onclick="alert('Hello World!')" style="backgroundcolor:
+rgb(0,209,255)">Close</button>
+</form>
+</body>
+CSS CODE:
+#div1{background-color: rgb(0,209,255); font-size:20px; }
+#div2{background-color: rgb(180,255,236); font-size: 20px}
+.bar{background-color:rgb(0,100,178);font-size:25px;
+color:white; height :30px; text-align:left}
+#header{background-color:rgb(0,153,220);font-size:50px; color:white; height:170px}
+table#t01 tr:nth-child(even) {
+background-color: rgb(180,255,236);
+}
+table#t01 tr:nth-child(odd) {
+background-color: rgb(0,209,255) ;
+}
+FORM CSS CODE:
+#div1{background-color: rgb(0,209,255); font-size:20px; }
+#div2{background-color: rgb(180,255,236); font-size: 20px}
+.bar{background-color:rgb(0,100,178);font-size:25px;
+color:white; height :30px; text-align:left}
+#header{background-color:rgb(0,153,220);font-size:50px; color:white; height:170px}
+table#t01 tr:nth-child(even) {
+background-color: rgb(180,255,236);
+}
+table#t01 tr:nth-child(odd) {
+background-color: rgb(0,209,255) ;
+}

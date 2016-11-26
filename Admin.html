@@ -1,0 +1,350 @@
+<html>
+
+<head>
+
+	<title> Pravaas - The journey begins ! </title>  
+	<link rel="stylesheet" href="style.css"></link> 
+	<script>
+		function Func(){
+			alert("hello");
+		}
+	</script>	
+
+	<script src="jQuery.js">
+	</script>
+
+	<script>
+		var k=0;
+		$(document).ready(function(){
+			$("#airlines").toggle();
+			$("#CarRental").toggle();
+			$("#Hotels").toggle();
+			$("#Agents").toggle();
+			$("#Travellers").toggle();
+
+	    	$("#airbutton").click(function(){
+	        	$("#airlines").toggle(500,function(){
+	        		;
+	        	});
+	  	    });
+	  	    $("#carbutton").click(function(){
+	        	$("#CarRental").toggle(500);
+	  	    });
+	  	    $("#hotelbutton").click(function(){
+	        	$("#Hotels").toggle();
+	  	    });
+	  	    $("#agentbutton").click(function(){
+	        	$("#Agents").toggle(500);
+	  	    });
+	  	    $("#travellerbutton").click(function(){
+	        	$("#Travellers").toggle();
+	  	    });
+
+	  	    $('#airsave').click(function(){
+	  	    	var list=document.getElementById("airdata");
+	  	    	while (list.hasChildNodes()) {
+      				  list.removeChild(list.firstChild);
+    			}
+	  	    	var ID=document.getElementById('airId').value;
+	  	    	var com=document.getElementById('aircom').value;
+	  	    	var pID=document.getElementById('airpackid').value;
+
+	  	    		var xhttp = new XMLHttpRequest(); 
+					xhttp.onreadystatechange = function(){
+						if (this.readyState == 4 && this.status == 200) {
+						var objTemp = this.responseText;
+						var obj = JSON.parse(objTemp);
+						var count=Object.keys(obj).length;
+						var i;
+						if(count==0){document.getElementById("airdata").innerHTML='Oops! No such Data there';}
+						for(i=0;i<count;i++){
+							var FId=obj[i].FlightId;
+							var Company=obj[i].Company;
+							var PId=obj[i].PackageId;
+							var fr=obj[i].From;
+							var to=obj[i].To;
+							var div1 = document.createElement("div");
+							var node1 = document.createTextNode("Flight Id : " +FId );
+							var node2 = document.createTextNode("Airline Company: " + Company);
+							var node3 = document.createTextNode("Package Id : " + PId);var node4 = document.createTextNode("From : " + fr);var node5 = document.createTextNode("To: " + to);
+							var brline= document.createElement("br");
+							var div0 = document.createElement("div");
+							var div2 = document.createElement("div");
+							var div3 = document.createElement("div");var div4 = document.createElement("div");var div5 = document.createElement("div");
+							div0.appendChild(node1);
+							//span1.insertBefore(brline);
+							div3.appendChild(node3);div4.appendChild(node4);div5.appendChild(node5);
+							//span1.insertBefore(brline);
+							div2.appendChild(node2);
+							div1.appendChild(div0);
+							div1.appendChild(div3);
+							div1.appendChild(div2);div1.appendChild(div4);div1.appendChild(div5);
+							var ele= document.getElementById("airdata");
+							ele.appendChild(div1);
+							}		
+						}
+				};
+				if(ID==0 && com=="N" && pID==0){
+					xhttp.open("GET", "http://127.0.0.1:8081/airlines/fetch", true);
+					xhttp.send();
+				}
+	  	    	else{
+	  	    		ID=ID.toString();
+	  	    		pID=pID.toString();
+	  	    		company =com.toString();
+	  	    		var url= 'http://127.0.0.1:8081/airlines/fetch/'+ID+'/' + company +'/' + pID;
+					xhttp.open("GET", url, true);
+					alert("Data Succesfully Sent and recieved");
+					xhttp.send();
+	  	    	}
+	  	    });
+
+			$('#carsave').click(function(){
+	  	    	
+	  	    	var list=document.getElementById("cardata");
+	  	    		while (list.hasChildNodes()) {
+      				     list.removeChild(list.firstChild);
+    				}
+    			//alert("hello");
+	  	    	var com=document.getElementById('carcom').value;
+	  	    	var model=document.getElementById('carmodel').value;
+
+	  	    	var xhttp1 = new XMLHttpRequest(); 
+					xhttp1.onreadystatechange = function(){
+						//alert("hello");
+						if (this.readyState == 4 && this.status == 200) {
+							//alert("hello");
+							var objTemp = this.responseText;
+							var obj = JSON.parse(objTemp);
+							var count=Object.keys(obj).length;
+							var i;
+							for(i=0;i<count;i++){
+								var carcom=obj[i].Company;
+								var carmodel=obj[i].Model;
+								var carprice=obj[i].Price;
+					
+								var div0 = document.createElement("div");
+								var div1 = document.createElement("div");
+								var div2 = document.createElement("div");
+								var div3 = document.createElement("div");
+
+								var node1 = document.createTextNode("Car Company : " +carcom);
+								var node2 = document.createTextNode("Car Model: " + carmodel);
+								var node3 = document.createTextNode("Car Price: " + carprice);
+								
+								div1.appendChild(node1);
+								div2.appendChild(node2);
+								div3.appendChild(node3);
+								div0.appendChild(div1);
+								div0.appendChild(div2);
+								div0.appendChild(div3);
+
+								var ele= document.getElementById("cardata");
+								ele.appendChild(div0);
+							}		
+						}
+					};
+					if(com="N" && model=="N"){
+						//alert("hello");
+						xhttp1.open("GET", "http://127.0.0.1:8081/Cars/fetch", true);
+						//alert("hello");
+						xhttp1.send();
+					}
+	  	    	});
+
+			$('#agentsave').click(function(){
+	  	    	
+	  	    	//var list=document.getElementById("agentdata");
+	  	    	//	while (list.hasChildNodes()) {
+      			//	     list.removeChild(list.firstChild);
+    			//	}
+    			//alert("hello");
+
+	  	    	var xhttp1 = new XMLHttpRequest(); 
+					xhttp1.onreadystatechange = function(){
+						//alert("hello");
+						if (this.readyState == 4 && this.status == 200) {
+							//alert("hello");
+							var objTemp = this.responseText;
+							var obj = JSON.parse(objTemp);
+							var count=Object.keys(obj).length;
+							var i;
+							for(i=0;i<count;i++){
+								var name=obj[i].name;
+								var age=obj[i].age;
+								age=age.toString();
+								var contact=obj[i].contact;
+					
+								var div0 = document.createElement("div");
+								var div1 = document.createElement("div");
+								var div2 = document.createElement("div");
+								var div3 = document.createElement("div");
+
+								var node1 = document.createTextNode("Agent Name : " +name);
+								var node2 = document.createTextNode("Age: " + age);
+								var node2 = document.createTextNode("contact: " + contact);
+								
+								div1.appendChild(node1);
+								div2.appendChild(node2);
+								div3.appendChild(node3);
+								div0.appendChild(div1);
+								div0.appendChild(div2);
+								div0.appendChild(div3);
+								//alert("hello");
+								var ele= document.getElementById("airdata");
+								ele.appendChild(div0);
+								alert("hello");
+							}		
+						}
+					};
+						
+						xhttp1.open("GET", "http://127.0.0.1:8081/Agents/fetch", true);
+						
+						xhttp1.send();
+	  	    	});
+		});
+	</script>
+</head>
+
+<body>
+
+<div id="nav_bar">
+<ul>
+  <li><a href="#about">Pravaas</a></li>
+
+  <li style="position:relative;float:right"><a>Admin Login</a></li>
+  <li style="position:relative;float:right"><a href="domino.html">Log Out</a></li>
+  
+</ul>
+</div>
+
+<br><br><br>
+
+<h1>Welcome Mr. Admin. Please choose the department info you want to view</h1>
+
+<div id="departments">
+	<button id="airbutton">Air Lines</button>
+	<button id="carbutton">Car Rental</button>
+	<button id="hotelbutton">Hotels</button>
+	<button id="agentbutton">Agents</button>
+	<button id="travellerbutton">Travellers</button>
+</div>
+
+
+<div id="airlines">
+	<div><h2> You can select whether you want to view or delete the data</h2></div>
+	<div id="Airdepartments">
+		<button id="airview">View</button>
+		<button id="airdelete">Delete</button>
+	</div>
+
+	<h2>Filter</h2>
+
+	<div id="filter">
+		
+			Flight ID:
+			<input type="text" name="airID" id="airId" value="0"></input>
+			Air Company:
+			<select name="airCompany" id="aircom">
+				<option>N</option>
+				<option>IndiGo</option>
+				<option>JetAirways</option>
+				<option>SpiceJet</option>
+				<option>AirIndia</option>
+				<option>Etihad</option>
+			</select>
+			Package ID:
+			<select name="packageID" id="airpackid">
+				<option>0</option>
+				<option>1</option>
+				<option>2</option>
+				<option>3</option>
+				<option>4</option>
+				<option>5</option>
+				<option>6</option>
+				<option>7</option>
+				<option>8</option>
+				<option>9</option>
+				<option>10</option>
+				<option>11</option>
+				<option>12</option>
+			</select>
+			<button id="airsave">Submit</button>
+			
+	</div>
+	<div id="airdata">
+	</div>
+</div>
+
+<div id="CarRental">
+	<br><div><h2> You can select whether you want to view or delete the data</h2></div>
+	<div id="Airdepartments">
+		<button id="airview">View</button>
+		<button id="airdelete">Delete</button>
+	</div>
+
+	<h2>Filter</h2>
+
+	<div id="filter">
+			Car Company:
+			<select name="CarCompany" id="carcom">
+				<option>N</option>
+				<option>Fiat</option>
+				<option>Ford</option>
+				<option>Hyundai</option>
+				<option>Skoda</option>
+				<option>Mercedes</option>
+				<option>Audi</option>
+				<option>Nissan</option>
+			</select>
+			Car Model:
+			<select name="CarModel" id="carmodel">
+				<option>N</option>
+				<option>Linea</option>
+				<option>Fiesta</option>
+				<option>Creta</option>
+				<option>Elantra</option>
+				<option>Figo</option>
+				<option>Mustang</option>
+				<option>Rapid</option>
+				<option>Laura</option>
+			</select>
+			<button id="carsave">Submit</button>
+			
+	</div>
+	<div id="cardata">
+	</div>
+</div>
+
+<div id="Hotels">
+	Here's the Hotels data
+</div>
+
+<div id="Agents">
+	<br><div><h2> You can select whether you want to view or delete the data</h2></div>
+	<div id="Airdepartments">
+		<button id="airview">View</button>
+		<button id="airdelete">Delete</button>
+	</div>
+	<button id="agentsave">Submit</button>
+	<div id="agentdata">
+		vhjvhj
+	</div>
+</div>
+
+<div id="Travellers">
+	<br><div><h2> You can select whether you want to view or delete the data</h2></div>
+	<div id="Airdepartments">
+		<button id="airview">View</button>
+		<button id="airdelete">Delete</button>
+	</div>
+	<button id="travellersave">Submit</button>
+	<div id="travellerdata">
+	</div>
+</div>
+
+
+
+
+</body>
+</html>
