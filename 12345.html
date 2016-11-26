@@ -1,0 +1,104 @@
+<html>
+<head>
+<script>
+var index = 1;
+Display(index);
+function Move(n) {
+index = index + n;
+Display(index);
+}
+function Display(n) {
+var i;
+var x = document.getElementsByClassName("Pic");
+if (n > x.length) {index = 1}
+if (n < 1) {index = x.length}
+for (i = 0; i < x.length; i++) {
+x[i].style.display = "none";
+}
+x[index-1].style.display = "block";
+}
+function startTime()
+{
+var today = new Date();
+var h = today.getHours();
+var m = today.getMinutes();
+var s = today.getSeconds();
+m = checkTime(m);
+s = checkTime(s);
+document.getElementById('div1').innerHTML =
+"Digital Clock ->"+ h + ":" + m + ":" + s;
+setTimeout(startTime,500);
+}
+function checkTime(i)
+{
+if (i < 10) {i = "0" + i};
+return i;
+}
+var c="white";
+function chcolor(k)
+{
+if(k==1){c="white"};
+if(k==2){c="blue"};
+if(k==3){c="green"};
+if(k==4){c="olive"};
+if(k==5){c="red"};
+if(k==6){c="black"};
+if(k==7){c="brown"};
+if(k==8){c="yellow"};
+}
+function change()
+{
+document.getElementById('div1').style.backgroundColor=c;
+document.getElementById('div2').style.backgroundColor=c;
+document.getElementById('div3').style.backgroundColor=c;
+document.getElementById('div1').style.fontFamily=document.getElementById('font').value;
+document.getElementById('div2').style.fontFamily=document.getElementById('font').value;
+document.getElementById('div3').style.fontFamily=document.getElementById('font').value;
+document.getElementById('div1').style.fontSize=document.getElementById('size').value;
+document.getElementById('div2').style.fontSize=document.getElementById('size').value;
+document.getElementById('div3').style.fontSize=document.getElementById('size').value;
+}
+</script>
+</head>
+<body onload="startTime()">
+<div id="div1" style="background-color:yellow; height:50%; font-size:100px" align="right" ></div>
+<div id="div3" style="background-color:olive; position:absolute; left:50.6%;top:50%;height:50%;width:50%; fontsize:
+15px">
+<button onclick="chcolor(1)" style="background-color:white; width:20px; height:20px"></button>
+<button onclick="chcolor(2)" style="background-color:blue; width:20px; height:20px"></button>
+<button onclick="chcolor(3)" style="background-color:green; width:20px; height:20px"></button>
+<button onclick="chcolor(4)" style="background-color:olive; width:20px; height:20px"></button>
+<br>
+<button onclick="chcolor(5)" style="background-color:red; width:20px; height:20px"></button>
+<button onclick="chcolor(6)" style="background-color:black; width:20px; height:20px"></button>
+<button onclick="chcolor(7)" style="background-color:brown; width:20px; height:20px"></button>
+<button onclick="chcolor(8)" style="background-color:yellow; width:20px; height:20px"></button>
+<select id="font">
+<option>-Font-Family-Select-</option>
+<option>georgia</option>
+<option>garamond</option>
+<option>serif</option>
+<option>sans-serif</option>
+</select>
+<select id="size">
+<option>-Font-Size-</option>
+<option>10px</option><option>15px</option><option>20px</option><option>25px</option><option>30px</opt
+ion><option>40px</option><option>50px</option><option>60px</option><option>70px</option><option>80px<
+/option><option>100px</option>
+</select>
+<br>
+<button onclick="change()"> See The Change!</button>
+</div>
+<div id="div2" style="background-color:blue;font-size:20px; position:absolute; top:50%; height:50%; width:50%">
+<div style="position:relative; text-align : center ">Images</div>
+<img class="Pic" src="1.jfif" style="width:100%; height:95.7%" onload="Display(1)">
+<img class="Pic" src="2.jpg" style="width:100%; height:95.7%">
+<img class="Pic" src="3.jfif" style="width:100%; height:95.7%">
+<img class="Pic" src="4.jfif" style="width:100%; height:95.7%">
+<button style="position:absolute;top:45%;left:0" onclick="Move(-1)"><-</button>
+<button style="position:absolute;top:45%;right:0" onclick="Move(1)">-></button>
+</div>
+</div>
+</body>
+</html>
+
